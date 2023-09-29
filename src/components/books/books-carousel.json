@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_books_books_carousels",
+  "info": {
+    "displayName": "Books Carousel",
+    "icon": "apps"
+  },
+  "options": {},
+  "attributes": {
+    "header": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

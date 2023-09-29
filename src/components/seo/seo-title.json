@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_seo_seo_titles",
+  "info": {
+    "displayName": "seoInformation",
+    "icon": "puzzle",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "seotitle": {
+      "type": "string"
+    },
+    "seodescription": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "collectionName": "components_layout_hero_sections",
+  "info": {
+    "displayName": "HeroSection",
+    "icon": "alien",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "buttons": {
+      "displayName": "button",
+      "type": "component",
+      "repeatable": true,
+      "component": "layout.button"
+    },
+    "label": {
+      "type": "string"
+    },
+    "heroDescription": {
+      "type": "string"
+    },
+    "totalBooks": {
+      "type": "integer"
+    },
+    "categories": {
+      "type": "integer"
+    },
+    "stores": {
+      "type": "integer"
+    }
+  }
+}

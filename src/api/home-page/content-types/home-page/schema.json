@@ -1,0 +1,41 @@
+{
+  "kind": "singleType",
+  "collectionName": "home_pages",
+  "info": {
+    "singularName": "home-page",
+    "pluralName": "home-pages",
+    "displayName": "HomePage",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "default": "Home Page"
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "seo.seo-title"
+    },
+    "hero": {
+      "displayName": "HeroSection",
+      "type": "component",
+      "repeatable": false,
+      "component": "layout.hero-section",
+      "required": true
+    },
+    "bookshowcase": {
+      "type": "dynamiczone",
+      "components": [
+        "books.books-carousel",
+        "books.featured-book"
+      ],
+      "required": true
+    }
+  }
+}

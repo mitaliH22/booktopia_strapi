@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_books_featured_books",
+  "info": {
+    "displayName": "featured book",
+    "icon": "cast"
+  },
+  "options": {},
+  "attributes": {
+    "header": {
+      "type": "string"
+    }
+  }
+}

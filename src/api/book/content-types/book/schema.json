@@ -57,6 +57,12 @@
       "relation": "oneToMany",
       "target": "api::order.order",
       "mappedBy": "books"
+    },
+    "seo": {
+      "displayName": "seoTitle",
+      "type": "component",
+      "repeatable": false,
+      "component": "seo.seo-title"
     }
   }
 }
