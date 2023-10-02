@@ -17,9 +17,7 @@ module.exports = createCoreController("api::order.order", {
           .findProduct(id);
 
         if (foundProduct) {
-          ctx.body = foundProduct;
           const updatedStock = foundProduct.stock - quantity;
-          
           // @ts-ignore
           await strapi.controller("api::book.book").updateQty(id, updatedStock)
         }
