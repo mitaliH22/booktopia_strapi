@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "wishlists",
+  "info": {
+    "singularName": "wishlist",
+    "pluralName": "wishlists",
+    "displayName": "wishlist",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "user_id": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "wishlist"
+    },
+    "books": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::book.book",
+      "inversedBy": "wishlists"
+    }
+  }
+}

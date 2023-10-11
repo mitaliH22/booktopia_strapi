@@ -19,6 +19,16 @@
     "category_description": {
       "type": "richtext",
       "required": false
+    },
+    "category_image": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }

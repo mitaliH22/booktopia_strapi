@@ -68,11 +68,11 @@
     "user_id": {
       "type": "integer"
     },
-    "orders": {
+    "wishlist": {
       "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::order.order",
-      "mappedBy": "owner"
+      "relation": "oneToOne",
+      "target": "api::wishlist.wishlist",
+      "mappedBy": "user_id"
     }
   }
 }
