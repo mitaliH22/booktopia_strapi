@@ -20,16 +20,10 @@
       "type": "media",
       "multiple": true,
       "required": true,
-      "allowedTypes": [
-        "images"
-      ]
+      "allowedTypes": ["images"]
     },
     "price": {
       "type": "integer",
-      "required": true
-    },
-    "book_id": {
-      "type": "uid",
       "required": true
     },
     "author": {
@@ -52,23 +46,11 @@
     "stock": {
       "type": "integer"
     },
-    "orders": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::order.order",
-      "mappedBy": "books"
-    },
     "seo": {
       "displayName": "seoTitle",
       "type": "component",
       "repeatable": false,
       "component": "seo.seo-title"
-    },
-    "wishlists": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::wishlist.wishlist",
-      "mappedBy": "books"
     },
     "likes": {
       "type": "json"

@@ -792,24 +792,13 @@ export interface ApiBookBook extends Schema.CollectionType {
     title: Attribute.String & Attribute.Required;
     thumbnail: Attribute.Media & Attribute.Required;
     price: Attribute.Integer & Attribute.Required;
-    book_id: Attribute.UID & Attribute.Required;
     author: Attribute.String & Attribute.Required;
     genre: Attribute.String;
     publication: Attribute.String;
     description: Attribute.Text & Attribute.Required;
     compare_at_price: Attribute.Integer;
     stock: Attribute.Integer;
-    orders: Attribute.Relation<
-      'api::book.book',
-      'oneToMany',
-      'api::order.order'
-    >;
     seo: Attribute.Component<'seo.seo-title'>;
-    wishlists: Attribute.Relation<
-      'api::book.book',
-      'manyToMany',
-      'api::wishlist.wishlist'
-    >;
     likes: Attribute.JSON;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -937,14 +926,24 @@ export interface ApiOrderOrder extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    order_products: Attribute.JSON;
-    customer_id: Attribute.Integer & Attribute.Required;
+    user: Attribute.Relation<
+      'api::order.order',
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
     books: Attribute.Relation<
       'api::order.order',
-      'manyToOne',
+      'oneToMany',
       'api::book.book'
     >;
-    order_total: Attribute.Decimal;
+    price: Attribute.Float;
+    quantity: Attribute.Integer;
+    subtotal: Attribute.Float;
+    total: Attribute.Float;
+    status: Attribute.Enumeration<
+      ['paid', 'checkout', 'canceled', 'failed', 'expired']
+    >;
+    payment_type: Attribute.Enumeration<['cash', 'card', 'upi', 'net_banking']>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -975,14 +974,14 @@ export interface ApiWishlistWishlist extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    user_id: Attribute.Relation<
+    user: Attribute.Relation<
       'api::wishlist.wishlist',
       'oneToOne',
       'plugin::users-permissions.user'
     >;
     books: Attribute.Relation<
       'api::wishlist.wishlist',
-      'manyToMany',
+      'oneToMany',
       'api::book.book'
     >;
     createdAt: Attribute.DateTime;
