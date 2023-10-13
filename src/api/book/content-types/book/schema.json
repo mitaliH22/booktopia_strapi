@@ -20,7 +20,9 @@
       "type": "media",
       "multiple": true,
       "required": true,
-      "allowedTypes": ["images"]
+      "allowedTypes": [
+        "images"
+      ]
     },
     "price": {
       "type": "integer",
@@ -45,12 +47,6 @@
     },
     "stock": {
       "type": "integer"
-    },
-    "seo": {
-      "displayName": "seoTitle",
-      "type": "component",
-      "repeatable": false,
-      "component": "seo.seo-title"
     },
     "likes": {
       "type": "json"

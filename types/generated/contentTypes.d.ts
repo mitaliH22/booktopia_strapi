@@ -798,7 +798,6 @@ export interface ApiBookBook extends Schema.CollectionType {
     description: Attribute.Text & Attribute.Required;
     compare_at_price: Attribute.Integer;
     stock: Attribute.Integer;
-    seo: Attribute.Component<'seo.seo-title'>;
     likes: Attribute.JSON;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
