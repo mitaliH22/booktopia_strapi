@@ -659,12 +659,6 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'manyToOne',
       'plugin::users-permissions.role'
     >;
-    user_id: Attribute.Integer;
-    wishlist: Attribute.Relation<
-      'plugin::users-permissions.user',
-      'oneToOne',
-      'api::wishlist.wishlist'
-    >;
     isAdmin: Attribute.Boolean & Attribute.DefaultTo<false>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -889,7 +883,6 @@ export interface ApiHomePageHomePage extends Schema.SingleType {
     title: Attribute.String &
       Attribute.Required &
       Attribute.DefaultTo<'Home Page'>;
-    seo: Attribute.Component<'seo.seo-title'>;
     hero: Attribute.Component<'layout.hero-section'> & Attribute.Required;
     bookshowcase: Attribute.DynamicZone<
       ['books.books-carousel', 'books.featured-book']
@@ -961,6 +954,68 @@ export interface ApiOrderOrder extends Schema.CollectionType {
   };
 }
 
+export interface ApiSectionSection extends Schema.CollectionType {
+  collectionName: 'sections';
+  info: {
+    singularName: 'section';
+    pluralName: 'sections';
+    displayName: 'section';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    label: Attribute.String;
+    links: Attribute.Component<'menu.link', true>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::section.section',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::section.section',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiTopLeftMenuTopLeftMenu extends Schema.SingleType {
+  collectionName: 'top_left_menus';
+  info: {
+    singularName: 'top-left-menu';
+    pluralName: 'top-left-menus';
+    displayName: 'top-left-menu';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    body: Attribute.DynamicZone<['menu.link', 'menu.dropdown']>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::top-left-menu.top-left-menu',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::top-left-menu.top-left-menu',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiWishlistWishlist extends Schema.CollectionType {
   collectionName: 'wishlists';
   info: {
@@ -1024,6 +1079,8 @@ declare module '@strapi/types' {
       'api::discount.discount': ApiDiscountDiscount;
       'api::home-page.home-page': ApiHomePageHomePage;
       'api::order.order': ApiOrderOrder;
+      'api::section.section': ApiSectionSection;
+      'api::top-left-menu.top-left-menu': ApiTopLeftMenuTopLeftMenu;
       'api::wishlist.wishlist': ApiWishlistWishlist;
     }
   }

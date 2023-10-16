@@ -29,10 +29,7 @@ export interface LayoutButton extends Schema.Component {
     icon: 'arrowRight';
     description: '';
   };
-  attributes: {
-    label: Attribute.String;
-    link: Attribute.String;
-  };
+  attributes: {};
 }
 
 export interface LayoutHeroSection extends Schema.Component {
@@ -52,16 +49,33 @@ export interface LayoutHeroSection extends Schema.Component {
   };
 }
 
-export interface SeoSeoTitle extends Schema.Component {
-  collectionName: 'components_seo_seo_titles';
+export interface MenuDropdown extends Schema.Component {
+  collectionName: 'components_menu_dropdowns';
   info: {
-    displayName: 'seoInformation';
-    icon: 'puzzle';
-    description: '';
+    displayName: 'dropdown';
+    icon: 'arrowDown';
   };
   attributes: {
-    seotitle: Attribute.String;
-    seodescription: Attribute.String;
+    label: Attribute.String;
+    sections: Attribute.Relation<
+      'menu.dropdown',
+      'oneToMany',
+      'api::section.section'
+    >;
+  };
+}
+
+export interface MenuLink extends Schema.Component {
+  collectionName: 'components_menu_links';
+  info: {
+    displayName: 'link';
+    icon: 'link';
+  };
+  attributes: {
+    label: Attribute.String;
+    url: Attribute.String;
+    style: Attribute.Enumeration<['none', 'border', 'blue']> &
+      Attribute.DefaultTo<'none'>;
   };
 }
 
@@ -72,7 +86,8 @@ declare module '@strapi/types' {
       'books.featured-book': BooksFeaturedBook;
       'layout.button': LayoutButton;
       'layout.hero-section': LayoutHeroSection;
-      'seo.seo-title': SeoSeoTitle;
+      'menu.dropdown': MenuDropdown;
+      'menu.link': MenuLink;
     }
   }
 }
