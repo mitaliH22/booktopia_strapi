@@ -50,6 +50,12 @@
     },
     "likes": {
       "type": "json"
+    },
+    "ratings": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::rating.rating",
+      "mappedBy": "book"
     }
   }
 }
