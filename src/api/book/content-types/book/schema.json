@@ -28,16 +28,9 @@
       "type": "integer",
       "required": true
     },
-    "book_id": {
-      "type": "uid",
-      "required": true
-    },
     "author": {
       "type": "string",
       "required": true
-    },
-    "genre": {
-      "type": "string"
     },
     "publication": {
       "type": "string"
@@ -52,26 +45,19 @@
     "stock": {
       "type": "integer"
     },
-    "orders": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::order.order",
-      "mappedBy": "books"
-    },
-    "seo": {
-      "displayName": "seoTitle",
-      "type": "component",
-      "repeatable": false,
-      "component": "seo.seo-title"
-    },
-    "wishlists": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::wishlist.wishlist",
-      "mappedBy": "books"
-    },
     "likes": {
       "type": "json"
+    },
+    "ratings": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::rating.rating",
+      "mappedBy": "book"
+    },
+    "categories": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::category.category"
     }
   }
 }

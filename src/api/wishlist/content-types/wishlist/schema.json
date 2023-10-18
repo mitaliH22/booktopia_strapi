@@ -12,17 +12,15 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "user_id": {
+    "user": {
       "type": "relation",
       "relation": "oneToOne",
-      "target": "plugin::users-permissions.user",
-      "inversedBy": "wishlist"
+      "target": "plugin::users-permissions.user"
     },
     "books": {
       "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::book.book",
-      "inversedBy": "wishlists"
+      "relation": "oneToMany",
+      "target": "api::book.book"
     }
   }
 }

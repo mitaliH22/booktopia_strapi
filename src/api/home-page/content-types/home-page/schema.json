@@ -17,11 +17,6 @@
       "required": true,
       "default": "Home Page"
     },
-    "seo": {
-      "type": "component",
-      "repeatable": false,
-      "component": "seo.seo-title"
-    },
     "hero": {
       "displayName": "HeroSection",
       "type": "component",

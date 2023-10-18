@@ -12,21 +12,35 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "order_products": {
-      "type": "json"
-    },
-    "customer_id": {
-      "type": "integer",
-      "required": true
+    "user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
     },
     "books": {
       "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::book.book",
-      "inversedBy": "orders"
+      "relation": "oneToMany",
+      "target": "api::book.book"
     },
-    "order_total": {
-      "type": "decimal"
+    "price": {
+      "type": "float"
+    },
+    "quantity": {
+      "type": "integer"
+    },
+    "subtotal": {
+      "type": "float"
+    },
+    "total": {
+      "type": "float"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": ["paid", "checkout", "canceled", "failed", "expired"]
+    },
+    "payment_type": {
+      "type": "enumeration",
+      "enum": ["cash", "card", "upi", "net_banking"]
     }
   }
 }

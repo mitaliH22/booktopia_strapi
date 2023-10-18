@@ -21,14 +21,16 @@
       "required": false
     },
     "category_image": {
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ],
       "type": "media",
-      "multiple": false
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "category_title"
     }
   }
 }
