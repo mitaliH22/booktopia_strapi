@@ -32,9 +32,6 @@
       "type": "string",
       "required": true
     },
-    "genre": {
-      "type": "string"
-    },
     "publication": {
       "type": "string"
     },
@@ -56,6 +53,11 @@
       "relation": "oneToMany",
       "target": "api::rating.rating",
       "mappedBy": "book"
+    },
+    "categories": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::category.category"
     }
   }
 }

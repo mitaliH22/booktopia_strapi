@@ -792,7 +792,6 @@ export interface ApiBookBook extends Schema.CollectionType {
     thumbnail: Attribute.Media & Attribute.Required;
     price: Attribute.Integer & Attribute.Required;
     author: Attribute.String & Attribute.Required;
-    genre: Attribute.String;
     publication: Attribute.String;
     description: Attribute.Text & Attribute.Required;
     compare_at_price: Attribute.Integer;
@@ -802,6 +801,11 @@ export interface ApiBookBook extends Schema.CollectionType {
       'api::book.book',
       'oneToMany',
       'api::rating.rating'
+    >;
+    categories: Attribute.Relation<
+      'api::book.book',
+      'oneToMany',
+      'api::category.category'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -857,7 +861,8 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
   attributes: {
     category_title: Attribute.String & Attribute.Required;
     category_description: Attribute.RichText;
-    category_image: Attribute.Media;
+    category_image: Attribute.Media & Attribute.Required;
+    slug: Attribute.UID<'api::category.category', 'category_title'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
